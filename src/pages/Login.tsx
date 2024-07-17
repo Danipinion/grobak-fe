@@ -1,10 +1,16 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
+  const [isLoading, setIsLoading] = React.useState(false);
+  const navigation = useNavigate();
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    setTimeout(() => {
+      navigation("/menu");
+      setIsLoading(false);
+    }, 5000);
   };
   return (
     <div className="flex flex-col  px-10 h-screen">
@@ -37,7 +43,9 @@ const Login = () => {
             />
           </div>
           <div>
-            <Button className="font-bold w-60">Login</Button>
+            <Button className="font-bold w-60">
+              {isLoading ? "Loading..." : "Login"}
+            </Button>
           </div>
           <div>
             <p className="text-sm text-primary">
