@@ -8,7 +8,7 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     setTimeout(() => {
-      navigation("/menu");
+      navigation("/home");
       setIsLoading(false);
     }, 5000);
   };
