@@ -5,6 +5,10 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import "leaflet/dist/leaflet.css";
+import Profile from "./pages/Profile";
+import Location from "./pages/Location";
+import Grafik from "./pages/Grafik";
+import Pembukuan from "./pages/Pembukuan";
 
 const App = () => {
   return (
@@ -17,6 +21,10 @@ const App = () => {
         {/* User Dashboard */}
         <Route path="/home" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/location" element={<Location />} />
+        <Route path="/grafik" element={<Grafik />} />
+        <Route path="/pembukuan" element={<Pembukuan />} />
       </Routes>
     </BrowserRouter>
   );
