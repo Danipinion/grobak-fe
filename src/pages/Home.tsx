@@ -1,30 +1,29 @@
-import { ChevronRight, LogOut, MapPin } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Menu } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div className="p-3">
-      <div className="m-5 flex items-center gap-2">
-        <LogOut className="px-2 py-3 bg-secondary border-2 border-primary w-12 h-12 rounded-full" />
-        <p className="text-3xl text-primary font-semibold">Menu</p>
-      </div>
-      <div className="bg-secondary w-full p-3 rounded-md border border-primary">
-        <div className="flex justify-between">
-          <div className="flex items-center gap-2 text-primary">
-            <MapPin className=" w-7 h-7 " />
-            <p className="text-xl font-semibold">Location</p>
-          </div>
-          <div>
-            <ChevronRight className="w-7 h-7 text-primary" />
-          </div>
+      <div
+        id="nav"
+        className="px-5 bg-secondary p-3 border border-primary rounded-md flex items-center justify-between"
+      >
+        <div>
+          <Link to="/menu">
+            <Menu className="w-10 h-10 text-primary" />
+          </Link>
         </div>
-        <hr className="my-3 text-primary bg-primary" />
-        <div className="flex justify-between">
-          <div className="flex items-center gap-2 text-primary">
-            <MapPin className=" w-7 h-7 " />
-            <p className="text-xl font-semibold">Location</p>
+        <div className="flex flex-wrap-reverse  text-right gap-2 items-center">
+          <div className="text-primary font-medium">
+            <p className="text-xl">Profile</p>
+            <p>Bocil EPeP</p>
           </div>
           <div>
-            <ChevronRight className="w-7 h-7 text-primary" />
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
           </div>
         </div>
       </div>
