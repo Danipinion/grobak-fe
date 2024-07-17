@@ -71,3 +71,9 @@
     background-size: cover;
   }
 }
+
+.leaflet-container {
+  height: 30vh;
+  width: 90vw;
+  border-radius: 1rem;
+}
