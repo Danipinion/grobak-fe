@@ -1,21 +1,35 @@
 import { Button } from "@/components/ui/button";
-import React from "react";
+import { LoginUser, reset } from "@/hook/authSlice";
+import { RootState } from "@/store";
+import { AnyAction } from "@reduxjs/toolkit";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { ThunkDispatch } from "redux-thunk";
+
 const Login = () => {
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch: ThunkDispatch<RootState, {}, AnyAction> = useDispatch();
   const navigation = useNavigate();
+  const { user, isLoading, isSuccess, isError, message } = useSelector(
+    (state: any) => state.auth
+  );
+  useEffect(() => {
+    if (user || isSuccess) {
+      navigation("/home");
+    }
+    dispatch(reset());
+  }, [user, isSuccess, dispatch, navigation]);
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      navigation("/home");
-      setIsLoading(false);
-    }, 5000);
+    dispatch(LoginUser({ email: email, password: password }));
   };
   return (
     <div className="flex flex-col  px-10 h-screen">
       <div className="self-start my-6">
         <h1 className="text-3xl text-primary font-bold">Login</h1>
+        {isError && <p className="text-red-500">{message}</p>}
       </div>
       <div>
         <form
@@ -29,7 +43,9 @@ const Login = () => {
             <input
               type="text"
               className="border-2 border-primary rounded-lg text-sm px-3 py-2 w-full"
-              placeholder="Masukkan Username"
+              placeholder="Masukkan Username or Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="flex flex-col w-full">
@@ -40,6 +56,8 @@ const Login = () => {
               type="password"
               className="border-2 border-primary rounded-lg text-sm px-3 py-2 w-full"
               placeholder="Masukkan Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div>
