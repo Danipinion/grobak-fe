@@ -9,7 +9,6 @@ import Profile from "./pages/Profile";
 import Location from "./pages/Location";
 import Grafik from "./pages/Grafik";
 import Pembukuan from "./pages/Pembukuan";
-import { Counter } from "./pages/TesCounter";
 
 const App = () => {
   return (
@@ -26,7 +25,6 @@ const App = () => {
         <Route path="/location" element={<Location />} />
         <Route path="/grafik" element={<Grafik />} />
         <Route path="/pembukuan" element={<Pembukuan />} />
-        <Route path="/counter" element={<Counter />} />
       </Routes>
     </BrowserRouter>
   );

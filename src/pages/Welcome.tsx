@@ -9,7 +9,7 @@ const Welcome = () => {
       </div>
       <div className="flex justify-center items-center my-7">
         <p className="text-4xl text-center w-2/3 font-ibm text-primary">
-          Selamat datang di GROBAK’KU
+          Selamat datang di WARSAFE
         </p>
       </div>
       <div className="flex flex-col gap-5 w-2/3">

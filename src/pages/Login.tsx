@@ -1,16 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { LoginUser, reset } from "@/hook/authSlice";
-import { RootState } from "@/store";
-import { AnyAction } from "@reduxjs/toolkit";
+import { AppDispatch } from "@/store";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { ThunkDispatch } from "redux-thunk";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch: ThunkDispatch<RootState, {}, AnyAction> = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigation = useNavigate();
   const { user, isLoading, isSuccess, isError, message } = useSelector(
     (state: any) => state.auth
