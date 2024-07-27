@@ -12,6 +12,8 @@ import {
   Legend,
 } from "chart.js";
 import { Button } from "@/components/ui/button";
+import instance from "@/instance";
+import { useEffect, useState } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -23,18 +25,58 @@ ChartJS.register(
   Legend
 );
 
-const lineChartData = {
-  labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-  datasets: [
-    {
-      label: "Data Penjualan",
-      data: [10, 20, 30, 40, 50, 60, 70],
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-  ],
+const getLineChartData = async () => {
+  const userId = localStorage.getItem("userId");
+  const response = await instance.get(`/chart/${userId}`);
+  const dataPelanggan = response.data;
+  console.log("🚀 ~ getLineChartData ~ dataPelanggan:", dataPelanggan);
+
+  const labels: string[] = [];
+  const data: number[] = [];
+
+  // Menentukan tanggal hari Senin minggu ini
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+  const mondayOffset = (dayOfWeek + 6) % 7; // Offset hari untuk mendapatkan Senin
+  const mondayDate = new Date(today);
+  mondayDate.setDate(today.getDate() - mondayOffset);
+
+  // Mengisi label dan data dari Senin hingga Minggu
+  for (let i = 0; i < 7; i++) {
+    const date = new Date(mondayDate);
+    date.setDate(mondayDate.getDate() + i);
+    const day = date.toLocaleDateString("id-ID", { weekday: "long" });
+    labels.push(day);
+    data.push(
+      dataPelanggan.filter(
+        (item: any) => item.tanggal === date.toISOString().split("T")[0]
+      ).length
+    );
+  }
+
+  return {
+    labels,
+    datasets: [
+      {
+        label: "Data Pelanggan",
+        data,
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+    ],
+  };
 };
 const Grafik = () => {
+  const [lineChartData, setLineChartData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getLineChartData();
+      setLineChartData(data);
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="p-3">
       <div className="my-5 flex items-center gap-2">
@@ -44,7 +86,11 @@ const Grafik = () => {
         <p className="text-3xl text-primary font-semibold">Grafik Pelanggan</p>
       </div>
       <div id="chart" className="mb-3">
-        <Line data={lineChartData} />
+        {lineChartData ? (
+          <Line data={lineChartData} />
+        ) : (
+          <p>Loading chart...</p>
+        )}
       </div>
       <div>
         <h1 className="text-3xl text-primary font-semibold">Asisten WarSafe</h1>

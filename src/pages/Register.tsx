@@ -1,9 +1,31 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import instance from "@/instance";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confPassword, setConfPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const userId = localStorage.getItem("userId");
+  useEffect(() => {
+    if (userId) {
+      navigate("/dashboard");
+    }
+  });
+  const Auth = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
+    await instance.post("/users", {
+      name: email,
+      email,
+      password,
+      confPassword,
+    });
+    navigate("/login");
+    setLoading(false);
   };
   return (
     <div className="flex flex-col  px-10 h-screen">
@@ -11,10 +33,7 @@ const Register = () => {
         <h1 className="text-3xl text-primary font-bold">Daftar</h1>
       </div>
       <div>
-        <form
-          onSubmit={handleRegister}
-          className="flex flex-col items-center gap-5"
-        >
+        <form onSubmit={Auth} className="flex flex-col items-center gap-5">
           <div className="flex flex-col w-full">
             <label htmlFor="" className="font-semibold text-xl text-primary">
               Username
@@ -22,17 +41,9 @@ const Register = () => {
             <input
               type="text"
               className="border-2 border-primary rounded-lg text-sm px-3 py-2 w-full"
-              placeholder="Masukkan Username"
-            />
-          </div>
-          <div className="flex flex-col w-full">
-            <label htmlFor="" className="font-semibold text-xl text-primary">
-              Email
-            </label>
-            <input
-              type="email"
-              className="border-2 border-primary rounded-lg text-sm px-3 py-2 w-full"
-              placeholder="Masukkan Email"
+              placeholder="Username"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="flex flex-col w-full">
@@ -43,6 +54,8 @@ const Register = () => {
               type="password"
               className="border-2 border-primary rounded-lg text-sm px-3 py-2 w-full"
               placeholder="Masukkan Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="flex flex-col w-full">
@@ -53,10 +66,14 @@ const Register = () => {
               type="password"
               className="border-2 border-primary rounded-lg text-sm px-3 py-2 w-full"
               placeholder="Masukkan Konfirmasi Password"
+              value={confPassword}
+              onChange={(e) => setConfPassword(e.target.value)}
             />
           </div>
           <div>
-            <Button className="font-bold w-60">Daftar</Button>
+            <Button type="submit" className="font-bold w-60">
+              {loading ? "Loading..." : "Daftar"}
+            </Button>
           </div>
           <div>
             <p className="text-sm text-primary">

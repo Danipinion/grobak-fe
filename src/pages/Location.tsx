@@ -33,11 +33,11 @@ const Location = () => {
           <h1 className="text-center text-secondary bg-primary px-5 font-bold w-1/2 rounded-full">
             Grobakku
           </h1>
-          <div className="flex gap-2 items-center">
-            <h1 className="text-md text-primary flex items-center gap-2 mt-2">
+          <div className="flex gap-2 items-center mt-3">
+            {/* <h1 className="text-md text-primary flex items-center gap-2 mt-2">
               <MapPin className="w-5 h-5" />
               <span>2.1 Km</span>
-            </h1>
+            </h1> */}
             {/* <h1 className="text-md text-primary flex items-center gap-2 mt-2">
               <Clock className="w-5 h-5" />
               <span>7 M</span>
