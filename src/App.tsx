@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import Location from "./pages/Location";
 import Grafik from "./pages/Grafik";
 import Pembukuan from "./pages/Pembukuan";
+import Komunitas from "./pages/Komunitas";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/location" element={<Location />} />
         <Route path="/grafik" element={<Grafik />} />
+        <Route path="/komunitas" element={<Komunitas />} />
         <Route path="/pembukuan" element={<Pembukuan />} />
       </Routes>
     </BrowserRouter>

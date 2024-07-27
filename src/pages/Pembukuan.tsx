@@ -126,7 +126,11 @@ const Pembukuan = () => {
                   />
                 </DialogHeader>
                 <DialogDescription className="w-full">
-                  <Button className="w-full" onClick={handlePemasukan}>
+                  <Button
+                    className="w-full"
+                    onClick={handlePemasukan}
+                    disabled={loading}
+                  >
                     {loading ? "Loading..." : "Simpan"}
                   </Button>
                 </DialogDescription>
@@ -158,7 +162,11 @@ const Pembukuan = () => {
                   />
                 </DialogHeader>
                 <DialogDescription className="w-full">
-                  <Button className="w-full" onClick={handlePengeluaran}>
+                  <Button
+                    className="w-full"
+                    onClick={handlePengeluaran}
+                    disabled={loading}
+                  >
                     {loading ? "Loading..." : "Simpan"}
                   </Button>
                 </DialogDescription>

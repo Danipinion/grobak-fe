@@ -2,9 +2,10 @@ import { getMe } from "@/hook/authSlice";
 import instance from "@/instance";
 // import MainLayout from "@/layouts/MainLayout";
 import { AppDispatch } from "@/store";
+import { ArrowLeft } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useSWR, { mutate } from "swr";
 
 const Komunitas = () => {
@@ -89,7 +90,7 @@ const Komunitas = () => {
                   <div
                     className={`px-3 py-2 ${
                       message?.user?.id === user?.id
-                        ? "bg-indigo-600 text-white"
+                        ? "bg-orange-950 text-white"
                         : "bg-gray-200 text-black"
                     } rounded`}
                   >
@@ -115,7 +116,7 @@ const Komunitas = () => {
           </div>
           <div className="flex items-center gap-2">
             <button
-              className="items-center flex px-3 py-2 bg-indigo-600 rounded-full shadow"
+              className="items-center flex px-3 py-2 bg-orange-950 rounded-full shadow"
               onClick={handleSendMessage}
             >
               {loading ? (
@@ -147,6 +148,13 @@ const Komunitas = () => {
             </button>
           </div>
         </div>
+        <Link to={"/menu"}>
+          <button className="items-center flex  p-1 bg-orange-950 rounded-full shadow absolute  top-6 left-7">
+            <h3 className="text-white  font-semibold ">
+              <ArrowLeft className="text-white" size={27} />
+            </h3>
+          </button>
+        </Link>
       </div>
     </>
   );

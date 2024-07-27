@@ -4,6 +4,7 @@ import {
   ChevronLeft,
   ChevronRight,
   MapPin,
+  Users,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 const Menu = () => {
@@ -27,7 +28,7 @@ const Menu = () => {
             </div>
           </div>
         </Link>
-        <hr className="my-3 text-primary bg-primary" />
+        <hr className="my-3  border border-primary" />
         <Link to={"/grafik"}>
           <div className="flex justify-between py-2">
             <div className="flex items-center gap-2 text-primary">
@@ -39,12 +40,24 @@ const Menu = () => {
             </div>
           </div>
         </Link>
-        <hr className="my-3 text-primary bg-primary" />
+        <hr className="my-3 border border-primary text-primary bg-primary" />
         <Link to={"/pembukuan"}>
           <div className="flex justify-between py-2">
             <div className="flex items-center gap-2 text-primary">
               <BookMarked className=" w-7 h-7 " />
               <p className="text-xl font-semibold">Pembukuan</p>
+            </div>
+            <div>
+              <ChevronRight className="w-7 h-7 text-primary" />
+            </div>
+          </div>
+        </Link>
+        <hr className="my-3 border border-primary text-primary bg-primary" />
+        <Link to={"/komunitas"}>
+          <div className="flex justify-between py-2">
+            <div className="flex items-center gap-2 text-primary">
+              <Users className=" w-7 h-7 " />
+              <p className="text-xl font-semibold">Komunitas</p>
             </div>
             <div>
               <ChevronRight className="w-7 h-7 text-primary" />
