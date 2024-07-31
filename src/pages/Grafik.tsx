@@ -1,19 +1,18 @@
-import { ChevronLeft, Send } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Line } from "react-chartjs-2";
+import instance from "@/instance";
 import {
-  Chart as ChartJS,
   CategoryScale,
+  Chart as ChartJS,
+  Legend,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
 } from "chart.js";
-import { Button } from "@/components/ui/button";
-import instance from "@/instance";
+import { ChevronLeft } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Line } from "react-chartjs-2";
+import { Link } from "react-router-dom";
 
 ChartJS.register(
   CategoryScale,
