@@ -95,14 +95,8 @@ const Grafik = () => {
         <iframe
           src="https://5546-103-247-12-10.ngrok-free.app/chatbot/32410088-6452-4a67-8fc1-486c31ea8901"
           frameBorder="0"
-          className="w-full h-screen"
+          className="w-full h-[50vh]"
         ></iframe>
-        <Link
-          to="/dashboard"
-          className="absolute top-3 left-3  text-white  text-lg   font-medium"
-        >
-          Kembali
-        </Link>
       </div>
     </div>
   );
