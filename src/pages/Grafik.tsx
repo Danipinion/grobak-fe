@@ -93,55 +93,17 @@ const Grafik = () => {
         )}
       </div>
       <div>
-        <h1 className="text-3xl text-primary font-semibold">Asisten WarSafe</h1>
-        <div className="h-64 overflow-y-auto pt-5">
-          <ul className="space-y-5">
-            <li className="max-w-lg ms-auto flex justify-end gap-x-2 sm:gap-x-4">
-              <div className="grow text-end space-y-3">
-                <div className="inline-block bg-primary rounded-2xl p-4 shadow-sm">
-                  <p className="text-sm text-white">Tes</p>
-                </div>
-              </div>
-            </li>
-            <li className="max-w-lg flex gap-x-2 sm:gap-x-4">
-              <div className="bg-white border border-gray-200 rounded-2xl p-4 space-y-3">
-                <h2 className="font-medium text-gray-800">Hallo</h2>
-              </div>
-            </li>
-            <li className="max-w-lg ms-auto flex justify-end gap-x-2 sm:gap-x-4">
-              <div className="grow text-end space-y-3">
-                <div className="inline-block bg-primary rounded-2xl p-4 shadow-sm">
-                  <p className="text-sm text-white">Tes</p>
-                </div>
-              </div>
-            </li>
-            <li className="max-w-lg flex gap-x-2 sm:gap-x-4">
-              <div className="bg-white border border-gray-200 rounded-2xl p-4 space-y-3">
-                <h2 className="font-medium text-gray-800">Hallo</h2>
-              </div>
-            </li>
-            <li className="max-w-lg ms-auto flex justify-end gap-x-2 sm:gap-x-4">
-              <div className="grow text-end space-y-3">
-                <div className="inline-block bg-primary rounded-2xl p-4 shadow-sm">
-                  <p className="text-sm text-white">Tes</p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div className="mt-5 relative">
-          <input
-            type="text"
-            className="w-full border-2 border-primary rounded-md text-sm px-3 py-2 focus-visible:outline-primary"
-            placeholder="Ketik sesuatu..."
-          />
-          <Button
-            className="absolute -right-1 top-1 hover:bg-transparent"
-            variant={"ghost"}
-          >
-            <Send className="text-primary " />
-          </Button>
-        </div>
+        <iframe
+          src="https://5546-103-247-12-10.ngrok-free.app/chatbot/32410088-6452-4a67-8fc1-486c31ea8901"
+          frameBorder="0"
+          className="w-full h-screen"
+        ></iframe>
+        <Link
+          to="/dashboard"
+          className="absolute top-3 left-3  text-white  text-lg   font-medium"
+        >
+          Kembali
+        </Link>
       </div>
     </div>
   );
