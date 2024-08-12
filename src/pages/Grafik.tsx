@@ -93,7 +93,7 @@ const Grafik = () => {
       </div>
       <div>
         <iframe
-          src="https://5546-103-247-12-10.ngrok-free.app/chatbot/32410088-6452-4a67-8fc1-486c31ea8901"
+          src="https://88f9-103-247-12-10.ngrok-free.app/chatbot/32410088-6452-4a67-8fc1-486c31ea8901"
           frameBorder="0"
           className="w-full h-[50vh]"
         ></iframe>
